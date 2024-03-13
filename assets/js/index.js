@@ -1,43 +1,43 @@
-/* Solicitar info al user donde se ingresa la cantidad de juegos a jugar contra la maquina */
-let jugadas = ['piedra', 'papel', 'tijera']
-let puntajeUser=0;
-let puntajeMaquina =0;
 
-let numeroJuagadas = parseInt(prompt('Cuantas veces deseas jugar en este torneo?'))
+const jugadas = ['piedra', 'papel', 'tijera']
+let puntajeJuego = [];
+let puntaje = 0;
+let resultado;
 
-for(let i = 0; i < numeroJuagadas; i++) {
-    let jugadaUser = prompt('Ingrese la jugada que deseas jugar (piedra, papel, tijera): ').toLowerCase()
-    if(!jugadas.includes(jugadaUser)) {
+const numeroJuagadas = parseInt(prompt('Cuantas veces deseas jugar en este torneo?'))
+
+for (let i = 0; i < numeroJuagadas; i++) {
+    const jugadaUser = prompt('Ingrese la jugada que deseas jugar (piedra, papel, tijera): ').toLowerCase()
+    if (!jugadas.includes(jugadaUser)) {
         alert('opcion no valida')
+        continue;
     }
-    
-    let indiceMaquina = Math.floor(Math.random() * jugadas.length)
-    
-    let opcionMaquina = jugadas[indiceMaquina]
 
-    if(jugadaUser === opcionMaquina) {
-        alert(`Empate - La maquina elige ${opcionMaquina} y tu elegiste ${jugadaUser}`)
+    const indiceMaquina = Math.floor(Math.random() * jugadas.length)
+    const opcionMaquina = jugadas[indiceMaquina]
+
+    if (jugadaUser === opcionMaquina) {
+        puntajeJuego.push(`Empate - Jugador con ${jugadaUser} - Maquina con ${opcionMaquina}`);
     } else if (
         (jugadaUser === 'piedra' && opcionMaquina === 'tijera') ||
         (jugadaUser === 'papel' && opcionMaquina === 'piedra') ||
         (jugadaUser === 'tijera' && opcionMaquina === 'papel')
-    ){
-        puntajeUser +=1;
-        alert(`Ganaste - La maquina elige ${opcionMaquina} y tu elegiste ${jugadaUser}`)
+    ) {
+        puntaje++;
+        puntajeJuego.push(`Jugador gana con ${jugadaUser} - Maquina pierde con ${opcionMaquina}`);
     } else {
-        puntajeMaquina +=1;
-        alert(`Perdiste - La maquina elige ${opcionMaquina} y tu elegiste ${jugadaUser}`)
+        puntaje--;
+        puntajeJuego.push(`Maquina gana con ${opcionMaquina} - Jugador pierde con ${jugadaUser}`);
     }
 }
 
-if(puntajeUser === puntajeMaquina) {
-    alert('Empate')
-}else if(puntajeUser > puntajeMaquina){
-    alert(`Ganaste el Torneo puntajes: Jugador ${puntajeUser} - Maquina ${puntajeMaquina}`)
-}else {
-    alert(`Perdiste el Torneo puntajes: Jugador ${puntajeUser} - Maquina ${puntajeMaquina}`)
+if (puntaje === 0) {
+    resultado = `Jugador y Maquina Empatan`;
+} else if (puntaje > 0) {
+    resultado = `Jugador Gana`;
+} else {
+    resultado = `Maquina Gana`;
 }
-/* Solicitar al user su jugada, esta operacion se realizara en cada juego {piedra, papel, tijera}*/
-/* Aplicar math.random para la seleccion de la jugada de la maquina */
-/* Evaluar la seleccion del user vs la maquina  */
-/* Indicar el resultado de la partida dependiendo del caso */
+
+alert(resultado + '\n\n' + puntajeJuego.join('\n'))
+

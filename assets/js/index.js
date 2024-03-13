@@ -9,6 +9,7 @@ const numeroJuagadas = parseInt(prompt('Cuantas veces deseas jugar en este torne
 for (let i = 0; i < numeroJuagadas; i++) {
     const jugadaUser = prompt('Ingrese la jugada que deseas jugar (piedra, papel, tijera): ').toLowerCase()
     if (!jugadas.includes(jugadaUser)) {
+        puntajeJuego.push(`Jugador igreso un valor incorrecto: ${jugadaUser} - Jugada Invalida`);
         alert('opcion no valida')
         continue;
     }

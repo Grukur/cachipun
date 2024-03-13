@@ -1,7 +1,7 @@
 /* Solicitar info al user donde se ingresa la cantidad de juegos a jugar contra la maquina */
 let jugadas = ['piedra', 'papel', 'tijera']
-let puntajeUser;
-let puntajeMaquina;
+let puntajeUser=0;
+let puntajeMaquina =0;
 
 let numeroJuagadas = parseInt(prompt('Cuantas veces deseas jugar en este torneo?'))
 
@@ -33,9 +33,9 @@ for(let i = 0; i < numeroJuagadas; i++) {
 if(puntajeUser === puntajeMaquina) {
     alert('Empate')
 }else if(puntajeUser > puntajeMaquina){
-    alert('Ganaste el Torneo')
+    alert(`Ganaste el Torneo puntajes: Jugador ${puntajeUser} - Maquina ${puntajeMaquina}`)
 }else {
-    alert('Perdiste el Torneo')
+    alert(`Perdiste el Torneo puntajes: Jugador ${puntajeUser} - Maquina ${puntajeMaquina}`)
 }
 /* Solicitar al user su jugada, esta operacion se realizara en cada juego {piedra, papel, tijera}*/
 /* Aplicar math.random para la seleccion de la jugada de la maquina */

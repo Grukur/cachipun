@@ -1,6 +1,6 @@
 
-const jugadas = ['piedra', 'papel', 'tijera']
-let puntajeJuego = [];
+const opciones = ['piedra', 'papel', 'tijera']
+let jugada = [];
 let puntaje = 0;
 let resultado;
 
@@ -8,27 +8,27 @@ const numeroJuagadas = parseInt(prompt('Cuantas veces deseas jugar en este torne
 
 for (let i = 0; i < numeroJuagadas; i++) {
     const jugadaUser = prompt('Ingrese la jugada que deseas jugar (piedra, papel, tijera): ').toLowerCase()
-    if (!jugadas.includes(jugadaUser)) {
-        puntajeJuego.push(`Jugador igreso un valor incorrecto: ${jugadaUser} - Jugada Invalida`);
+    if (!opciones.includes(jugadaUser)) {
+        jugada.push(`Jugador igreso un valor incorrecto: ${jugadaUser} - Jugada Invalida`);
         alert('opcion no valida')
         continue;
     }
 
-    const indiceMaquina = Math.floor(Math.random() * jugadas.length)
-    const opcionMaquina = jugadas[indiceMaquina]
+    const indiceMaquina = Math.floor(Math.random() * opciones.length)
+    const opcionMaquina = opciones[indiceMaquina]
 
     if (jugadaUser === opcionMaquina) {
-        puntajeJuego.push(`Empate - Jugador con ${jugadaUser} - Maquina con ${opcionMaquina}`);
+        jugada.push(`Empate - Jugador con ${jugadaUser} - Maquina con ${opcionMaquina}`);
     } else if (
         (jugadaUser === 'piedra' && opcionMaquina === 'tijera') ||
         (jugadaUser === 'papel' && opcionMaquina === 'piedra') ||
         (jugadaUser === 'tijera' && opcionMaquina === 'papel')
     ) {
         puntaje++;
-        puntajeJuego.push(`Jugador gana con ${jugadaUser} - Maquina pierde con ${opcionMaquina}`);
+        jugada.push(`Jugador gana con ${jugadaUser} - Maquina pierde con ${opcionMaquina}`);
     } else {
         puntaje--;
-        puntajeJuego.push(`Maquina gana con ${opcionMaquina} - Jugador pierde con ${jugadaUser}`);
+        jugada.push(`Maquina gana con ${opcionMaquina} - Jugador pierde con ${jugadaUser}`);
     }
 }
 
@@ -40,5 +40,5 @@ if (puntaje === 0) {
     resultado = `Maquina Gana`;
 }
 
-alert(resultado + '\n\n' + puntajeJuego.join('\n'))
+alert(resultado + '\n\n' + jugada.join('\n'))
 

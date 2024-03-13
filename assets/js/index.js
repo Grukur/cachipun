@@ -37,7 +37,5 @@ if(puntajeUser === puntajeMaquina) {
 }else {
     alert(`Perdiste el Torneo puntajes: Jugador ${puntajeUser} - Maquina ${puntajeMaquina}`)
 }
-/* Solicitar al user su jugada, esta operacion se realizara en cada juego {piedra, papel, tijera}*/
-/* Aplicar math.random para la seleccion de la jugada de la maquina */
-/* Evaluar la seleccion del user vs la maquina  */
-/* Indicar el resultado de la partida dependiendo del caso */
+
+// probando subir una rama
